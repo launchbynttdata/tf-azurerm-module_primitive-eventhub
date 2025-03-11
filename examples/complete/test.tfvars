@@ -6,3 +6,4 @@ public_network_access_enabled = false
 eventhub_name                 = "test-eventhub"
 partition_count               = 4
 message_retention             = 2
+status                        = "Active"

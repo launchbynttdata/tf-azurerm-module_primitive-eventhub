@@ -33,3 +33,32 @@ variable "message_retention" {
     error_message = "The message_Retention must be between 1 and 7 days."
   }
 }
+
+variable "status" {
+  description = "The status of the Event Hub. Possible values: Active, Disabled."
+  type        = string
+  default     = "Active"
+
+  validation {
+    condition     = contains(["Active", "Disabled"], var.status)
+    error_message = "The status must be one of: Active, Disabled"
+  }
+}
+
+
+variable "capture_description" {
+  description = "Capture Configuration for Event Hub"
+  type = object({
+    enabled             = bool
+    encoding            = string
+    interval_in_seconds = number
+    size_limit_in_bytes = number
+    destination = object({
+      name                = string
+      blob_container_name = string
+      archive_name_format = string
+      storage_account_id  = string
+    })
+  })
+  default = null
+}

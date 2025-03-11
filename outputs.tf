@@ -19,3 +19,8 @@ output "eventhub_name" {
   description = "The name of the Event Hub instance"
   value       = azurerm_eventhub.eventhub.name
 }
+
+output "status" {
+  description = "The status of the Event Hub"
+  value       = azurerm_eventhub.eventhub.status
+}

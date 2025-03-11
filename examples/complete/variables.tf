@@ -165,3 +165,23 @@ variable "public_network_access_enabled" {
 variable "location" {
   type = string
 }
+variable "status" {
+  type    = string
+  default = "Active"
+}
+
+variable "capture_description" {
+  type = object({
+    enabled             = bool
+    encoding            = string
+    interval_in_seconds = number
+    size_limit_in_bytes = number
+    destination = object({
+      name                = string
+      blob_container_name = string
+      archive_name_format = string
+      storage_account_id  = string
+    })
+  })
+  default = null
+}

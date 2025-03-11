@@ -42,6 +42,8 @@ No resources.
 | <a name="input_capacity"></a> [capacity](#input\_capacity) | The capacity of the Event Hub Namespace:<br/>  - Basic: 1<br/>  - Standard: Between 1 and 20<br/>  - Premium: Between 1 and 4 | `number` | `1` | no |
 | <a name="input_public_network_access_enabled"></a> [public\_network\_access\_enabled](#input\_public\_network\_access\_enabled) | n/a | `bool` | `true` | no |
 | <a name="input_location"></a> [location](#input\_location) | n/a | `string` | n/a | yes |
+| <a name="input_status"></a> [status](#input\_status) | n/a | `string` | `"Active"` | no |
+| <a name="input_capture_description"></a> [capture\_description](#input\_capture\_description) | n/a | <pre>object({<br/>    enabled             = bool<br/>    encoding            = string<br/>    interval_in_seconds = number<br/>    size_limit_in_bytes = number<br/>    destination = object({<br/>      name                = string<br/>      blob_container_name = string<br/>      archive_name_format = string<br/>      storage_account_id  = string<br/>    })<br/>  })</pre> | `null` | no |
 
 ## Outputs
 

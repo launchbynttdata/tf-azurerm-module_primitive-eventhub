@@ -16,4 +16,22 @@ resource "azurerm_eventhub" "eventhub" {
   resource_group_name = var.resource_group_name
   partition_count     = var.partition_count
   message_retention   = var.message_retention
+  status              = var.status
+
+  dynamic "capture_description" {
+    for_each = var.capture_description != null ? [1] : []
+    content {
+      enabled             = var.capture_description.enabled
+      encoding            = var.capture_description.encoding
+      interval_in_seconds = var.capture_description.interval_in_seconds
+      size_limit_in_bytes = var.capture_description.size_limit_in_bytes
+
+      destination {
+        name                = var.capture_description.destination.name
+        blob_container_name = var.capture_description.destination.blob_container_name
+        archive_name_format = var.capture_description.destination.archive_name_format
+        storage_account_id  = var.capture_description.destination.storage_account_id
+      }
+    }
+  }
 }
