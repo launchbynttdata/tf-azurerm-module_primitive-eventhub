@@ -39,5 +39,5 @@ func TestEventhub(t *testing.T) {
 		}).
 		Build()
 
-	lib.RunSetupTestTeardown(t, *ctx, testimpl.TestEventhubModule)
+	lib.RunSetupTestTeardown(t, *ctx, testimpl.TestComposableEventhubModule)
 }
