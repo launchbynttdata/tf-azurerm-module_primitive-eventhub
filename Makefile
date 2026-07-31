@@ -358,6 +358,10 @@ tfmodule/lint: tfmodule/init
 	@$(foreach module,$(ALL_EXAMPLES),$(call tflint_terraform_module,$(module)))
 	@$(foreach module,$(ALL_EXAMPLES),$(call validate_terraform_module,$(module)))
 
+.PHONY: tfmodule/check-version-floor
+tfmodule/check-version-floor:
+	@bash .github/scripts/check-terraform-version-floor.sh
+
 .PHONY: tfmodule/list
 tfmodule/list:
 	@echo -n "Modules: "
